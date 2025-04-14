@@ -63,3 +63,11 @@ func Test_RelationCache_Set_LowerBound_Update(
 	assert.True(t, present)
 	assert.Equal(t, msg3, msg3Back)
 }
+
+func Test_RelationCache_Zero(
+	t *testing.T,
+) {
+	cache := NewRelationCache[*pgtypes.RelationMessage]()
+	_, present := cache.Get(0)
+	assert.False(t, present)
+}
